@@ -18,8 +18,6 @@ public class Main {
 		
 		kia.showCarList();
 		
-		
-		
 	}
 	
 }
