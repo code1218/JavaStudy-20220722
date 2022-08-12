@@ -8,11 +8,20 @@ public class UserController {
 	private UserService userService;
 	private Scanner scanner;
 	
+	
+	/*
+	 * UserController가 생성되는 시점에 매개변수로 UserService를 전달받아
+	 * 객체를 주입한다.
+	 * 그리고 Scanner객체는 생성되는 시점에 바로 같이 생성하여 주입한다.
+	 */
 	public UserController(UserService userService) {
 		this.userService = userService;
 		scanner = new Scanner(System.in);
 	}
 	
+	/*
+	 * 전체 로직의 시작점
+	 */
 	public void run() {
 		
 		while(true) {
@@ -34,10 +43,13 @@ public class UserController {
 				}
 			}else if(select.equals("1")) {
 				createUser();
+				
 			}else if(select.equals("2")) {
-				searchUser();
-			}else if(select.equals("3")) {
 				showUserList();
+				
+			}else if(select.equals("3")) {
+				searchUser();
+				
 			}else {
 				System.out.println("다시 입력하세요.");
 			}

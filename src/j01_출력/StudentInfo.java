@@ -1,8 +1,12 @@
 package j01_출력;
 
+import j15_스태틱.Student;
+
 public class StudentInfo {
 
 	public static void main(String[] args) {
+		int num = Student.getAutoNumber();
+		System.out.println(num);
 		int a;
 		a = 31;
 		
