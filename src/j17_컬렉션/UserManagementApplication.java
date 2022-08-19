@@ -55,6 +55,23 @@ public class UserManagementApplication {
 		System.out.print("수정 할 아이디를 입력하세요: ");
 		username = scanner.nextLine();
 		
+		if(repository.getClass() == UserArrayList.class) {
+			User user = ((UserArrayList) repository).findUserByUsername(username);
+			if(user == null) {
+				System.out.println("해당 아이디는 존재하지 않는 아이디입니다.");
+				
+			}else {
+				System.out.print("수정 할 이름을 입력하세요: ");
+				name = scanner.nextLine();
+				
+				if(((UserArrayList) repository).updateUser(user, name)) {
+					System.out.println("수정 완료.");
+				}else {
+					System.out.println("수정 실패");
+				}
+			}
+		}
+		
 	}
 	
 	public void removeUser() {
@@ -63,6 +80,24 @@ public class UserManagementApplication {
 		System.out.println("[ 사용자 정보 삭제 ]");
 		System.out.print("삭제 할 아이디를 입력하세요: ");
 		username = scanner.nextLine();
+		
+		if(repository.getClass() == UserArrayList.class) {
+			User user = ((UserArrayList) repository).findUserByUsername(username);
+			if(user == null) {
+				System.out.println("해당 아이디는 존재하지 않는 아이디입니다.");
+				
+			}else {
+				System.out.print("정말로 사용자를 삭제하시겠습니까(y/n): ");
+				if(scanner.nextLine().equals("y")) {
+					
+					if(((UserArrayList) repository).deleteUser(user)) {
+						System.out.println("삭제 완료.");
+					}else {
+						System.out.println("삭제 실패");
+					}
+				}
+			}
+		}
 		
 	}
 	
